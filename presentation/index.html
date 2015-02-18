@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>The Cloud and Rackspace developer+</title>
+
+		<meta name="description" content="A workshop on The Cloud and Rackspace developer+">
+		<meta name="author" content="Everett Toews">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/theme/my-theme.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+        <section>
+          <h1>The Cloud</h1>
+          <h1>and</h1>
+          <h1>Rackspace developer+</h1>
+          <center>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Everett Toews</td>
+                  <td><a href="https://twitter.com/everett_toews">@everett_toews</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </center>
+        </section>
+
+        <section>
+          <h1>Agenda</h1>
+          <ol>
+            <li><a href="#/cloud">The Cloud</a></li>
+            <li><a href="#/openstack">OpenStack</a></li>
+            <li><a href="#/rackspace">Rackspace</a></li>
+            <li><a href="#/devplus">developer+</a></li>
+            <li><a href="#/server">Start a Server</a></li>
+            <li><a href="#/secure">Secure a Server</a></li>
+            <li><a href="#/app">Deploy an App</a></li>
+            <li><a href="#/qa">Q &amp; A</a></li>
+          </ol>
+        </section>
+
+        <section id="cloud">
+          <h1>The Cloud</h1>
+        </section>
+
+        <section>
+          <img class="stretch" src="img/flavors.png">
+        </section>
+
+        <section>
+          <img class="stretch" src="img/spectrum.png">
+        </section>
+
+        <section>
+          <h1>IaaS</h1>
+        </section>
+
+        <section>
+          <h1>Private</h1>
+        </section>
+
+        <section>
+          <h1>Public</h1>
+        </section>
+
+        <section>
+          <h1>Infrastructure</h1>
+          <h1>with an API</h1>
+        </section>
+
+        <section id="openstack">
+          <h1>OpenStack</h1>
+        </section>
+
+        <section>
+          <img class="stretch" src="img/openstack.jpg">
+        </section>
+
+        <section>
+          <p>"To produce the ubiquitous Open Source Cloud Computing platform that will meet the needs of public and private clouds regardless of size, by being simple to implement and massively scalable."</p>
+        </section>
+
+        <section>
+          <img class="stretch" src="img/openstack-arch.png">
+        </section>
+
+        <section id="rackspace">
+          <h1>Rackspace</h1>
+        </section>
+
+        <section>
+          <img class="stretch" src="img/rackspace.jpg">
+        </section>
+
+        <section>
+          <p>"To be recognized as one of the world's greatest service companies."</p>
+        </section>
+
+        <section>
+          <img class="stretch" src="img/rackspace-arch.png">
+        </section>
+
+        <section id="devplus">
+          <h1>developer+</h1>
+        </section>
+
+        <section>
+          <img class="stretch" src="img/lego.jpg">
+        </section>
+
+        <section>
+          <h1>$50/month credit</h1>
+          <h1>for 12 months</h1>
+        </section>
+
+        <section>
+          <h1>Over $50/month</h1>
+          <h1>you get charged</h1>
+        </section>
+
+        <section>
+          <h1>Meter starts running</h1>
+          <h1>on resource creation</h1>
+        </section>
+
+        <section>
+          <h1>1 GB Performance</h1>
+          <h1>Server for 1 month</h1>
+          <h1>&lt; $25</h1>
+        </section>
+
+        <section>
+          <h2><a href="http://www.rackspace.com/calculator" target="_blank">rackspace.com/calculator</a></h2>
+          <h2>(ignore Service Level)</h2>
+        </section>
+
+        <section>
+          <img class="stretch" src="img/calc.png">
+        </section>
+
+        <section>
+          <h1>Delete unused</h1>
+          <h1>resources!</h1>
+        </section>
+
+        <section>
+          <h2><a href="https://developer.rackspace.com/" target="_blank">developer.rackspace.com</a></h2>
+        </section>
+
+        <section>
+          <h2><a href="https://developer.rackspace.com/signup/" target="_blank">developer.rackspace.com/signup/</a></h2>
+        </section>
+
+        <section id="server">
+          <h1>Start a Server</h1>
+        </section>
+
+        <section>
+          <h2><a href="https://mycloud.rackspace.com/" target="_blank">mycloud.rackspace.com</a></h2>
+        </section>
+
+        <section>
+          <img class="stretch" src="img/create-server-01.png">
+        </section>
+
+        <section>
+          <img class="stretch" src="img/create-server-02.png">
+        </section>
+
+        <section>
+          <img class="stretch" src="img/create-server-03.png">
+        </section>
+
+        <section>
+          <img class="stretch" src="img/create-server-04.png">
+        </section>
+
+        <section>
+          <img class="stretch" src="img/create-server-05.png">
+        </section>
+
+        <section>
+          <img class="stretch" src="img/create-server-06.png">
+        </section>
+
+        <section id="secure">
+          <h1>Secure a Server</h1>
+        </section>
+
+        <section>
+          <h2>Login</h2>
+          <pre><code data-trim>
+ssh -i .ssh/id_rsa root@my.server.ipv4.address
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Run secure.sh</h2>
+          <pre><code data-trim>
+wget https://raw.githubusercontent.com/everett-toews/rackspace-developer-doubleplusgood/gh-pages/scripts/secure.sh
+chmod u+x secure.sh
+./secure.sh
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Review <a href="https://github.com/everett-toews/rackspace-developer-doubleplusgood/blob/gh-pages/scripts/secure.sh" target="_blank">secure.sh</a></h2>
+        </section>
+
+        <section id="app">
+          <h1>Deploy an App</h1>
+        </section>
+
+        <section>
+          <h2>Get Tools</h2>
+          <pre><code data-trim>
+sudo apt-get -y install git python-pip python-virtualenv
+virtualenv my-venv
+source my-venv/bin/activate
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>/u/icanlegothat</h2>
+          <pre><code data-trim>
+git clone https://github.com/MDamien/legoit.git
+cd legoit
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py retrieve_data
+python manage.py runserver
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>my.server.ipv4.address:8000</h2>
+        </section>
+
+        <section>
+          <h2>ERR_CONNECTION_TIMED_OUT</h2>
+        </section>
+
+        <section>
+          <h2>Open Port 8000</h2>
+          <pre><code data-trim>
+[Ctrl-C]
+sudo ufw allow 8000
+python manage.py runserver 0.0.0.0:8000
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Use nginx or Apache on port 80 instead!</h1>
+        </section>
+
+        <section id="qa">
+          <h1>Thanks!</h1>
+          <h2>Q &amp; A</h2>
+          <h3><a href="">rack.to/cs373</a></h3>
+        </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

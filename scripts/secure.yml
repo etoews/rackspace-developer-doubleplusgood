@@ -1,6 +1,19 @@
-# This assumes you have a hosts file with a group named
-# ubuntu-servers. Change hosts: below to whatever is appropriate for
-# your lists of hosts.
+# ansible playbook for basic hardening of an Ubuntu server. 
+#
+# Disclaimer: This is not the most secure configuration possible. This script
+# is only intended to be more secure than the default configuration. No
+# promises are made about this script preventing your server from getting
+# owned or your bike getting stolen. The bad guys are still out to get you.
+# And running this script does not excuse you from writing secure application
+# code!
+#
+# You would typically run this script on a host from which you can reach
+# one or more hosts to be secured. This assumes you have ansible installed
+# and a file listing the hosts to be securited with a group named
+# ubuntu-servers. Change the value of the hosts: key below to
+# whatever is group or groups you use in your hosts file. Run as follows:
+#
+# ansible-playbook -i path/to/hosts secure.yml
 ---
 - name: Basic hardening of Ubuntu VM
   hosts: ubuntu-servers

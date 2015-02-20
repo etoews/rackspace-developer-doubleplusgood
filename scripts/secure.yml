@@ -22,13 +22,21 @@
         - ufw
         - unattended-upgrades
 
+    - name: Enable unattended upgrades, update packages
+      sudo: yes
+      lineinfile: destfile=/etc/apt/apt.conf.d/20auto-upgrades create=yes state=present line='APT::Periodic::Update-Package-Lists "1";'
+
+    - name: Enable unattended upgrades, upgrades
+      sudo: yes
+      lineinfile: destfile=/etc/apt/apt.conf.d/20auto-upgrades create=yes state=present line='APT::Periodic::Unattended-Upgrade "1";'
+
     - name: ensure fail2ban is running
       sudo: yes
       action: service name=fail2ban state=restarted enabled=yes
     
     - name: forbid SSH root login
       sudo: yes
-      lineinfile: destfile=/etc/ssh/sshd_config regexp="^PermitRootLogin without-password" line="PermitRootLogin no" state=present
+      lineinfile: destfile=/etc/ssh/sshd_config regexp="^PermitRootLogin.*" line="PermitRootLogin no" state=present
       notify:
         - restart ssh
 

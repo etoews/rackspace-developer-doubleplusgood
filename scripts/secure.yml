@@ -45,7 +45,7 @@
 
     - name: ensure fail2ban is running
       sudo: yes
-      action: service name=fail2ban state=restarted enabled=yes
+      action: service name=fail2ban state=started enabled=yes
     
     - name: forbid SSH root login
       sudo: yes
@@ -61,20 +61,23 @@
 
     - name: reset firewall
       sudo: yes
-      action: shell ufw --force reset
-    
+      ufw: state=reset
+
     - name: allow firewall authorized ports
       sudo: yes
-      action: shell ufw allow {{ item }} 
+      ufw: rule=allow port={{ item }} proto=tcp
       with_items:
-        - 22
         - 80
         - 443
-    
+
+    - name: Limit access to port 22
+      sudo: yes
+      ufw: rule=limit port=22 proto=tcp
+      
     - name: enable firewall
       sudo: yes
-      action: shell ufw --force enable
-      
+      ufw: state=enabled policy=deny
+
   handlers:
 
     - name: restart ssh

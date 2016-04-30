@@ -1,0 +1,85 @@
+# ansible playbook for basic hardening of an Ubuntu server. 
+#
+# Disclaimer: This is not the most secure configuration possible. This script
+# is only intended to be more secure than the default configuration. No
+# promises are made about this script preventing your server from getting
+# owned or your bike getting stolen. The bad guys are still out to get you.
+# And running this script does not excuse you from writing secure application
+# code!
+#
+# You would typically run this script on a host from which you can reach
+# one or more hosts to be secured. This assumes you have ansible installed
+# and a file listing the hosts to be securited with a group named
+# ubuntu-servers. Change the value of the hosts: key below to
+# whatever is group or groups you use in your hosts file. Run as follows:
+#
+# ansible-playbook -i path/to/hosts secure.yml
+---
+- name: Basic hardening of Ubuntu VM
+  hosts: ubuntu-servers
+  tasks:
+
+    - name: update apt cache
+      apt: update_cache=yes cache_valid_time=3600
+      sudo: yes
+
+    - name: upgrade the distro
+      apt: upgrade=yes
+      sudo: yes
+    - name: install packages
+      apt: pkg={{ item }} state=latest
+      sudo: yes
+      with_items:
+        - fail2ban
+        - chkrootkit
+        - ufw
+        - unattended-upgrades
+
+    - name: Enable unattended upgrades, update packages
+      sudo: yes
+      lineinfile: destfile=/etc/apt/apt.conf.d/20auto-upgrades create=yes state=present line='APT::Periodic::Update-Package-Lists "1";'
+
+    - name: Enable unattended upgrades, upgrades
+      sudo: yes
+      lineinfile: destfile=/etc/apt/apt.conf.d/20auto-upgrades create=yes state=present line='APT::Periodic::Unattended-Upgrade "1";'
+
+    - name: ensure fail2ban is running
+      sudo: yes
+      action: service name=fail2ban state=started enabled=yes
+    
+    - name: forbid SSH root login
+      sudo: yes
+      lineinfile: destfile=/etc/ssh/sshd_config regexp="^PermitRootLogin.*" line="PermitRootLogin no" state=present
+      notify:
+        - restart ssh
+
+    - name: Forbid Password Authentication over ssh
+      sudo: yes
+      lineinfile: destfile=/etc/ssh/sshd_config regexp="^#?PasswordAuthentication.*" line="PasswordAuthentication no" state=present
+      notify:
+        - restart ssh
+
+    - name: reset firewall
+      sudo: yes
+      ufw: state=reset
+
+    - name: allow firewall authorized ports
+      sudo: yes
+      ufw: rule=allow port={{ item }} proto=tcp
+      with_items:
+        - 80
+        - 443
+
+    - name: Limit access to port 22
+      sudo: yes
+      ufw: rule=limit port=22 proto=tcp
+      
+    - name: enable firewall
+      sudo: yes
+      ufw: state=enabled policy=deny
+
+  handlers:
+
+    - name: restart ssh
+      sudo: yes
+      action: service name=ssh state=restarted enabled=yes
